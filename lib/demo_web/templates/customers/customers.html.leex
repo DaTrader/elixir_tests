@@ -1,0 +1,47 @@
+<body xmlns:width="http://www.w3.org/1999/xhtml">
+  <!-- Liveview Test form; we'll keep it until the essential parts of the Model editor are finished -->
+  <form id="form1">
+    <div class="mdl-table"
+         <%= case assigns[ :event_msg] do %>
+           <% { :item_inserted, id} -> %>
+           data-move_focus="name_<%= id%>"
+           <% _any -> %><%= nil %>
+         <% end %>
+         phx-hook="RowFunctions"
+         id="customers">
+      <div class="mdl-head-row">
+        <div class="mdl-head-col">Customer ID</div>
+        <div class="mdl-head-col">Customer Name</div>
+        <div class="mdl-head-col">Customer Address</div>
+      </div>
+      <%= for customer <- @customers do %>
+        <div class="mdl-draggable-row"
+             draggable="true"
+             phx-hook="RowDnD"
+             id="customer_<%= customer.id %>">
+          <div class="mdl-row">
+            <input type="text" class="mdl-input" value="<%= customer.id %>"
+                   id="id_<%= customer.id %>"
+                   phx-keyup="mdl_keyup:<%= customer.id %>"
+                   phx-blur="mdl_change"
+                   phx-value-id="<%= customer.id %>"
+                   phx-value-data="customer.id"/>
+            <input type="text" class="mdl-input" value="<%= customer.name %>"
+                   id="name_<%= customer.id %>"
+                   phx-keyup="mdl_keyup:<%= customer.id %>"
+                   phx-blur="mdl_change"
+                   phx-value-id="<%= customer.id %>"
+                   phx-value-data="customer.name"/>
+            <input type="text" class="mdl-input" value="<%= customer.address %>"
+                   id="address_<%= customer.id %>"
+                   phx-keyup="mdl_keyup:<%= customer.id %>"
+                   phx-blur="mdl_change"
+                   phx-value-id="<%= customer.id %>"
+                   phx-value-data="customer.address"/>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </form>
+</body>
+

@@ -1,0 +1,66 @@
+$border_color: #cccccc;
+$table_background: #dddddd;
+$body_background: #ffffff;
+$focus_background: #ffffff;
+$head_background: #ccccee;
+$text_color: #333333;
+$border_width: 1px;
+$cell_size: 18px;
+$font_size: 14px;
+$outer_margin: 10px;
+$column_width: 200px;
+$cell_pad_lr: 4px;
+$cell_pad_tb: 2px;
+$cell_rest: 2 * #{ $cell_pad_tb} + 2 * #{ $border_width};
+$font_family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+.mdl-table, .mdl-head-col, .mdl-input {
+  border: $border_color solid;
+}
+.mdl-table {
+  float: left;
+  display: table;
+  width: max-content;
+  background-color: $table_background;
+  border-width: $border_width 0 0 $border_width;
+  border-spacing: 0;
+  margin: $outer_margin;
+}
+.mdl-head-row, .mdl-row {
+  display: table-row;
+  box-sizing: border-box;
+  width: auto;
+  clear: none;
+}
+.mdl-head-col {
+  display: table-column;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  background-color: $head_background;
+  font-weight: bold;
+}
+.mdl-head-col, .mdl-input {
+  font-family: $font_family;
+  font-size: $font_size;
+  color: $text_color;
+  box-sizing: border-box;
+  float: left;
+  border-width: 0 $border_width $border_width 0;
+  padding: $cell_pad_tb $cell_pad_lr $cell_pad_tb $cell_pad_lr;
+  width: $column_width;
+  min-height: calc( #{ $cell_size} + #{ $cell_rest});
+  //  max-height: calc( #{ $cell_size} + #{ $cell_rest});   // prevent mangled view when enter key hit
+}
+.mdl-input {
+  text-align: right;
+}
+
+.mdl-draggable-row .mdl-input:focus {
+  margin: ( 0 - $border_width) 0 0 ( 0 - $border_width);
+  outline: none;
+  border: solid black $border_width;
+  background-color: $focus_background;
+  width: $column_width + 1px;
+  min-height: calc( #{ $cell_size} + #{ $cell_rest} + #{$border_width});
+}
