@@ -2,7 +2,7 @@ defmodule DemoWeb.CustomersLive do
   use Phoenix.LiveView
   alias Demo.Customers
 
-  def mount( _params, _session, socket) do
+  def mount( _session, socket) do
     socket =
       socket
       |> assign_customers( Customers.list_all())
