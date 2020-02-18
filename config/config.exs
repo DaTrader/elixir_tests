@@ -17,7 +17,7 @@ config :demo, DemoWeb.Endpoint,
   render_errors: [view: DemoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Demo.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [
-    signing_salt: "SECRET_SALT"
+    signing_salt: "3BZHt8aCaoRnR0NHFxaJpBT538QiDRhB"
   ]
 
 # Configures Elixir's Logger

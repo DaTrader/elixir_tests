@@ -1,6 +1,15 @@
 defmodule DemoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :demo
 
+  @session_options [
+    store: :cookie,
+    key: "_demo_key",
+    signing_salt: "J2CPBywm"
+  ]
+
+  socket "/live", Phoenix.LiveView.Socket,
+         websocket: [connect_info: [session: @session_options]]
+
   socket "/socket", DemoWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -37,10 +46,7 @@ defmodule DemoWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_demo_key",
-    signing_salt: "J2CPBywm"
+  plug Plug.Session, @session_options
 
   plug DemoWeb.Router
 end
