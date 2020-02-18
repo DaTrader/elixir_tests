@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :demo, Demo.Repo,
-  username: "damir",
-  password: "damir",
+  username: "postgres",
+  password: "postgres",
   database: "demo_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
